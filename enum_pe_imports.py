@@ -1,11 +1,13 @@
 import pefile
 import os
 
+only_sys_files = True
+
 def create_log(filename):
     return open(filename[:-4] + '.log', 'w')
 
 for filename in os.listdir('./'):
-    if '.sys' not in filename:
+    if only_sys_files is True and '.sys' not in filename:
         continue
     sysfile = pefile.PE(filename)
     log_handle = create_log(filename)
